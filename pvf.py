@@ -92,7 +92,7 @@ class Application (tk.Frame):
         self._cell_size = cell_size
         self._current_pvf = 0
         self._cmap = mplcm.ScalarMappable(norm=mpl.colors.Normalize(-1.0, 1.0),
-                                          cmap='plasma')
+                                            cmap='plasma')
 
         self._reset_button = tk.Button(self, text='Reset', command=self.reset_cells)
         self._reset_button.pack(fill=tk.X, expand=1)
@@ -108,12 +108,12 @@ class Application (tk.Frame):
             self._canvas.bind(ev, lambda event: self._handle_set_cell(event, True))
 
         self._pvfselect = tk.Scale(self, orient=tk.HORIZONTAL, label='PVF',
-                                   from_=1, command=self._handle_pvfselect)
+                                    from_=1, command=self._handle_pvfselect)
         self._pvfselect.pack(fill=tk.X, expand=1)
 
         self._eigselect = tk.Scale(self, orient=tk.HORIZONTAL, label='Eigenvalue',
-                                   from_=0, resolution=-1,
-                                   command=self._handle_eigselect)
+                                    from_=0, resolution=-1,
+                                    command=self._handle_eigselect)
         self._eigselect.pack(fill=tk.X, expand=1)
 
         self.recalculate()
@@ -123,7 +123,7 @@ class Application (tk.Frame):
     def _make_canvas (master, cell_size, width, height):
         canvas_size = np.multiply([width, height], cell_size)
         canvas = tk.Canvas(master, width=canvas_size[0], height=canvas_size[1],
-                           bg='black')
+                            bg='black')
 
         def make_rect (x, y):
             return canvas.create_rectangle(*np.multiply((x, y, x+1, y+1), cell_size))
